@@ -76,7 +76,7 @@ fetch('https://raw.githubusercontent.com/GitHubbb-bbb/ggr472-lab4/main/data/pedc
 
     // Extract the bounding coordinates as a flat array: [minX, minY, maxX, maxY]
     // This is the format required by turf.hexGrid() as its first argument.
-    let bboxCoords = expandedEnv.bbox;
+    let bboxCoords = turf.bbox(expandedEnv);
 
     // Log the bbox array so you can verify the coordinate range in the console
     console.log('Bounding box coordinates [minX, minY, maxX, maxY]:', bboxCoords);

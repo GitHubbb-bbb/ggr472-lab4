@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GGR472 Lab 4 | Toronto Collision Map</title>
+
+    <!-- Mapbox GL JS — map rendering library -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v3.10.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v3.10.0/mapbox-gl.css' rel='stylesheet' />
+
+    <!-- Turf.js — GIS analysis library (hexGrid, envelope, collect, etc.) -->
+    <script src='https://unpkg.com/@turf/turf@7.2.0/turf.min.js'></script>
+
+    <!-- Your custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- FULL-SCREEN MAP CONTAINER -->
+    <div id='map' class='map'></div>
+
+    <!-- CONTROL PANEL (top-left) -->
+    <div class='panel' id='controls'>
+        <h3>Toronto Collisions</h3>
+        <p class='subtitle'>Pedestrians &amp; Cyclists · 2006–2021</p>
+
+        <!-- Layer visibility toggle -->
+        <div class='control-row'>
+            <label>
+                <input type='checkbox' id='hexcheck' checked>
+                Show Hexgrid
+            </label>
+        </div>
+
+        <!-- Dropdown: placeholder for INVTYPE filter (see script.js comments) -->
+        <div class='control-row'>
+            <label for='typefilter'>Involvement type:</label>
+            <select id='typefilter'>
+                <option value='All'>All (Pedestrian + Cyclist)</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- LEGEND (bottom-left) -->
+    <div class='legend' id='legend'>
+        <h4>Collisions per hexagon</h4>
+        <div class='legend-row'><span style='background:#67000d'></span>50+ (highest)</div>
+        <div class='legend-row'><span style='background:#de2d26'></span>30 – 50</div>
+        <div class='legend-row'><span style='background:#fb6a4a'></span>15 – 30</div>
+        <div class='legend-row'><span style='background:#fcae91'></span>5 – 15</div>
+        <div class='legend-row'><span style='background:#fee5d9'></span>1 – 5</div>
+        <div class='legend-row'>
+            <span style='background:#f7f7f7; border: 1px solid #aaa;'></span>0 (none)
+        </div>
+        <p class='legend-note'>Each hexagon ≈ 0.5 km across<br>Click a hexagon for details</p>
+    </div>
+
+    <!-- Main JavaScript file — loads last so the DOM is ready -->
+    <script src="script.js"></script>
+
+</body>
+</html>
